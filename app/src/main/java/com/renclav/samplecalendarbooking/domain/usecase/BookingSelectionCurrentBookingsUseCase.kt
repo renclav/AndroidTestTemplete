@@ -1,6 +1,7 @@
 package com.renclav.samplecalendarbooking.domain.usecase
 
 import com.renclav.samplecalendarbooking.data.repository.BookingsRepository
+import com.renclav.samplecalendarbooking.domain.mapper.BookingSelectionCurrentBookingsResponseMapper
 import com.renclav.samplecalendarbooking.domain.model.Booking
 import com.renclav.samplecalendarbooking.util.coroutines.AppCoroutineDispatchers
 import kotlinx.coroutines.flow.*
@@ -19,10 +20,17 @@ internal interface BookingSelectionCurrentBookingsUseCase {
 internal class BookingSelectionCurrentBookingsUseCaseImpl @Inject constructor(
     private val dispatchers: AppCoroutineDispatchers,
     private val bookingsRepository : BookingsRepository,
+    private val currentBookingsResponseMapper: BookingSelectionCurrentBookingsResponseMapper,
 ) : BookingSelectionCurrentBookingsUseCase {
     override fun invoke(userId: String): Flow<List<Booking>> {
-        return flow<List<Booking>> {
-            listOf<Booking>()
+        return flow {
+            val response = bookingsRepository
+                .getBookingsByUserId(userId)
+                .getOrThrow()
+                .let {
+                    currentBookingsResponseMapper(it)
+                }
+            emit(response)
         }
             .catch {
                 //Log exception and re-throw

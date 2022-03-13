@@ -10,8 +10,8 @@ import javax.inject.Inject
 
 /**
  * Performs CRUD for all booking related information
- * Since this is a test, its hardcoded (with no api, mappers, etc)
- * NOTE: this is not and interface as its not needed for testing eg
+ * Since this is a test, its hardcoded (with no external apis/data sources, mappers, etc)
+ * NOTE: this is not an interface as its not needed for testing eg
  * to make a fake of this, we would mock the constructor args, and not the logic here in common cases
  */
 internal class BookingsRepository @Inject constructor(
