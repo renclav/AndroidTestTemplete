@@ -33,6 +33,6 @@ internal class BookingSelectionFragment : Fragment(), MavericksView {
     }
 
     override fun invalidate(): Unit = withState(viewModel) { state ->
-        binding.testview.text = state.dummy
+        binding.testview.text = state.currentBookings()?.toString()
     }
 }

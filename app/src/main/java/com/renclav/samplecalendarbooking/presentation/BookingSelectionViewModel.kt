@@ -1,17 +1,26 @@
 package com.renclav.samplecalendarbooking.presentation
 
-import com.airbnb.mvrx.MavericksViewModel
-import com.airbnb.mvrx.MavericksViewModelFactory
-import com.airbnb.mvrx.ViewModelContext
+import com.airbnb.mvrx.*
 import com.airbnb.mvrx.hilt.AssistedViewModelFactory
 import com.airbnb.mvrx.hilt.hiltMavericksViewModelFactory
+import com.renclav.samplecalendarbooking.domain.usecase.BookingSelectionCurrentBookingsUseCase
 import dagger.assisted.Assisted
 import dagger.assisted.AssistedFactory
 import dagger.assisted.AssistedInject
 
 internal class BookingSelectionViewModel @AssistedInject constructor(
     @Assisted initialState: BookingSelectionStateModel,
+    currentBookingsUseCase: BookingSelectionCurrentBookingsUseCase,
 ) : MavericksViewModel<BookingSelectionStateModel>(initialState) {
+
+    init {
+        currentBookingsUseCase("dummy id we would get from fragment arguments")
+            .execute {
+                copy(
+                    currentBookings = it
+                )
+            }
+    }
 
     @AssistedFactory
     interface Factory :
@@ -25,7 +34,7 @@ internal class BookingSelectionViewModel @AssistedInject constructor(
 
         override fun initialState(viewModelContext: ViewModelContext): BookingSelectionStateModel {
             return BookingSelectionStateModel(
-                dummy = "cool, I work"
+                currentBookings = Uninitialized,
             )
         }
     }
