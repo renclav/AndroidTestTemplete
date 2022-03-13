@@ -1,5 +1,6 @@
 package com.renclav.samplecalendarbooking.domain.usecase
 
+import com.renclav.samplecalendarbooking.data.repository.BookingsRepository
 import com.renclav.samplecalendarbooking.domain.model.Booking
 import com.renclav.samplecalendarbooking.util.coroutines.AppCoroutineDispatchers
 import kotlinx.coroutines.flow.*

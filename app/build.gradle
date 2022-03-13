@@ -80,5 +80,9 @@ dependencies {
 
     implementation "com.airbnb.android:mavericks:$mvrx_version"
     implementation "com.airbnb.android:mavericks-hilt:$mvrx_version"
+
     implementation 'com.jakewharton.timber:timber:5.0.1'
+
+    implementation "com.squareup.moshi:moshi:$moshi_version"
+    kapt "com.squareup.moshi:moshi-kotlin-codegen:$moshi_version"
 }
