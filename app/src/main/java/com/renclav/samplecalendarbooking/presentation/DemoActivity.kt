@@ -1,4 +1,4 @@
-package com.renclav.samplecalendarbooking
+package com.renclav.samplecalendarbooking.presentation
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -10,9 +10,9 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import com.renclav.samplecalendarbooking.ui.theme.SampleCalendarBookingTheme
+import com.renclav.samplecalendarbooking.presentation.theme.SampleCalendarBookingTheme
 
-class MainActivity : ComponentActivity() {
+class DemoActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {

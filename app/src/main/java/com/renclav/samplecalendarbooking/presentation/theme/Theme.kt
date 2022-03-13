@@ -1,4 +1,4 @@
-package com.renclav.samplecalendarbooking.ui.theme
+package com.renclav.samplecalendarbooking.presentation.theme
 
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material.MaterialTheme
