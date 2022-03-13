@@ -1,7 +1,10 @@
 plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
+    id 'dagger.hilt.android.plugin'
 }
+
+apply plugin: 'kotlin-kapt'
 
 android {
     compileSdk 32
@@ -45,6 +48,15 @@ android {
     }
 }
 
+kapt {
+    javacOptions {
+        // Increase the max count of errors from annotation processors.
+        // Default is 100.
+        option("-Xmaxerrs", 500)
+    }
+    correctErrorTypes true
+}
+
 dependencies {
 
     implementation 'androidx.core:core-ktx:1.7.0'
@@ -62,4 +74,7 @@ dependencies {
     implementation "androidx.activity:activity-ktx:1.4.0"
 
     implementation "androidx.fragment:fragment-ktx:1.4.1"
+    implementation "com.google.dagger:hilt-android:$hilt_version"
+    kapt "com.google.dagger:hilt-compiler:$hilt_version"
+
 }

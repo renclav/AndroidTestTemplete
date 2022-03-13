@@ -6,7 +6,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.renclav.samplecalendarbooking.R
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class BookingSelectionFragment : Fragment() {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
