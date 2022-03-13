@@ -9,7 +9,7 @@ import com.renclav.samplecalendarbooking.R
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class BookingSelectionFragment : Fragment() {
+internal class BookingSelectionFragment : Fragment() {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
