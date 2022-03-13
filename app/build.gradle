@@ -83,6 +83,8 @@ dependencies {
 
     implementation "com.airbnb.android:mavericks:$mvrx_version"
     implementation "com.airbnb.android:mavericks-hilt:$mvrx_version"
+    implementation "com.airbnb.android:mavericks-compose:$mvrx_version"
+
 
     implementation 'com.jakewharton.timber:timber:5.0.1'
 
