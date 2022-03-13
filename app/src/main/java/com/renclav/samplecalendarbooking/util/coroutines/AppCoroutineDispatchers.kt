@@ -12,7 +12,10 @@ data class AppCoroutineDispatchers(
     val io: CoroutineDispatcher,
     val computation: CoroutineDispatcher,
     val main: CoroutineDispatcher
-)
+) {
+    // Convenience for tests
+    constructor(dispatcher: CoroutineDispatcher) : this(dispatcher, dispatcher, dispatcher)
+}
 
 @InstallIn(SingletonComponent::class)
 @Module
