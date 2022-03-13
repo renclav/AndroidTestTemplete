@@ -10,14 +10,16 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.fragment.app.FragmentActivity
+import com.renclav.samplecalendarbooking.R
 import com.renclav.samplecalendarbooking.presentation.theme.SampleCalendarBookingTheme
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class DemoActivity : ComponentActivity() {
+class DemoActivity : FragmentActivity(R.layout.demo_activity) {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContent {
+/*        setContent {
             SampleCalendarBookingTheme {
                 // A surface container using the 'background' color from the theme
                 Surface(
@@ -27,7 +29,7 @@ class DemoActivity : ComponentActivity() {
                     Greeting("Android")
                 }
             }
-        }
+        }*/
     }
 }
 
