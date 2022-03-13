@@ -17,6 +17,7 @@ internal interface BookingSelectionCurrentBookingsUseCase {
 
 internal class BookingSelectionCurrentBookingsUseCaseImpl @Inject constructor(
     private val dispatchers: AppCoroutineDispatchers,
+    private val bookingsRepository : BookingsRepository,
 ) : BookingSelectionCurrentBookingsUseCase {
     override fun invoke(userId: String): Flow<List<Booking>> {
         return flow<List<Booking>> {
