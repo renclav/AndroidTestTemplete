@@ -1,8 +1,10 @@
 package com.renclav.samplecalendarbooking.data.repository
 
 import com.renclav.samplecalendarbooking.data.model.BookingsByUserResult
+import com.renclav.samplecalendarbooking.data.model.ExistingBooking
 import com.renclav.samplecalendarbooking.util.coroutines.AppCoroutineDispatchers
 import com.squareup.moshi.Moshi
+import com.squareup.moshi.adapter
 import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
@@ -16,7 +18,7 @@ internal class BookingsRepository @Inject constructor(
     private val dispatchers: AppCoroutineDispatchers,
     private val moshi: Moshi,
 ) {
-    private val fakeData = """
+    private val fakeBookingData = """
     [
   {
     "starts_at": "2022-03-10T09:00:00.000Z",
@@ -50,8 +52,24 @@ internal class BookingsRepository @Inject constructor(
     """
 
 
+    /**
+     * Fetch user bookings
+     * NOTE: fetching and decoding this data is usually handled by a tool like Retrofit,
+     * also, a LCE (loading content error) class would usually be used (or sealed class), this is for
+     * expedition
+     */
+    @OptIn(ExperimentalStdlibApi::class)
     suspend fun getBookingsByUserId(userId: String): Result<BookingsByUserResult> =
         withContext(dispatchers.io) {
-            TODO("Add fake data from json")
+            val adapter = moshi.adapter<List<ExistingBooking>>()
+            return@withContext Result
+                .runCatching {
+                    val data =
+                        adapter.fromJson(fakeBookingData)
+                            ?: throw IllegalStateException("data is null")
+                    BookingsByUserResult(
+                        data = data,
+                    )
+                }
         }
 }
