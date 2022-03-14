@@ -24,6 +24,7 @@ import java.time.temporal.ChronoUnit
 internal fun CalenderContent(
     modifier: Modifier,
     viewModel: BookingSelectionViewModel,
+    dateSelected: ((ZonedDateTime) -> Unit),
 ) {
     val _currentBookings by viewModel.collectAsState(BookingSelectionStateModel::currentBookings)
     val currentSpace by viewModel.collectAsState(BookingSelectionStateModel::currentSpace)
@@ -48,10 +49,14 @@ internal fun CalenderContent(
                 maxLines = 2,
                 overflow = TextOverflow.Ellipsis,
             )
+            //Hard coded, based on tech spec, that we're selecting from Bristol, United Kingdom
             val startOfMarch = ZonedDateTime.of(2022, 3, 1, 0, 0, 0, 0, currentSpace.zoneId)
             LazyVerticalGrid(cells = GridCells.Fixed(7), contentPadding = PaddingValues(8.dp)) {
                 items(31) {
-                    Day(day = it, currentBookings, startOfMarch)
+                    val currentDay = startOfMarch.plusDays(it.toLong())
+                    Day(day = (it + 1), currentBookings, currentDay) {
+                        dateSelected(currentDay)
+                    }
                 }
             }
         }
@@ -63,24 +68,27 @@ internal fun CalenderContent(
  */
 @OptIn(ExperimentalMaterialApi::class)
 @Composable
-internal fun Day(day: Int, currentBookings: List<Booking>, startOfMarch: ZonedDateTime) {
+internal fun Day(
+    day: Int,
+    currentBookings: List<Booking>,
+    currentDay: ZonedDateTime,
+    onClick: (() -> Unit)
+) {
     Surface(
         modifier = Modifier
             .fillMaxWidth()
             .aspectRatio(1f),
         shape = MaterialTheme.shapes.small,
-        onClick = {},
+        onClick = onClick,
     ) {
-
-        val nextDay = startOfMarch.plusDays(day.toLong())
         val containsBooking = currentBookings.filter {
-            it.start.truncatedTo(ChronoUnit.DAYS).equals(nextDay.truncatedTo(ChronoUnit.DAYS))
+            it.start.truncatedTo(ChronoUnit.DAYS).equals(currentDay.truncatedTo(ChronoUnit.DAYS))
         }
 
         if (containsBooking.isEmpty()) {
             Text(
                 modifier = Modifier.wrapContentSize(Alignment.Center),
-                text = (day + 1).toString(),
+                text = day.toString(),
                 style = MaterialTheme.typography.caption
             )
         } else {
@@ -92,7 +100,7 @@ internal fun Day(day: Int, currentBookings: List<Booking>, startOfMarch: ZonedDa
             ) {
                 Text(
                     modifier = Modifier.wrapContentSize(Alignment.Center),
-                    text = (day + 1).toString(),
+                    text = day.toString(),
                     style = MaterialTheme.typography.caption
                 )
             }

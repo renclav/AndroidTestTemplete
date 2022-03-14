@@ -30,8 +30,6 @@ internal class BookingSelectionFragment : Fragment() {
     private var _binding: BookingSelectionFragmentBinding? = null
     private val binding get() = _binding!!
 
-    // private val viewModel: BookingSelectionViewModel by fragmentViewModel()
-
     @OptIn(ExperimentalMaterialApi::class)
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -47,11 +45,13 @@ internal class BookingSelectionFragment : Fragment() {
                         rememberBackdropScaffoldState(initialValue = BackdropValue.Revealed)
                     val scope = rememberCoroutineScope()
 
+                    val title by viewModel.collectAsState(BookingSelectionStateModel::toolBarTitle)
+
                     BackdropScaffold(
                         scaffoldState = scaffoldState,
                         appBar = {
                             TopAppBar(
-                                title = { Text("Select a Date") },
+                                title = { Text(title) },
                                 navigationIcon = {
                                     if (scaffoldState.isConcealed) {
                                         IconButton(
@@ -85,6 +85,10 @@ internal class BookingSelectionFragment : Fragment() {
                             CalenderContent(
                                 modifier = Modifier.fillMaxWidth(),
                                 viewModel = viewModel,
+                                dateSelected = {
+                                    viewModel.daySelected(it)
+                                    scope.launch { scaffoldState.conceal() }
+                                }
                             )
                         },
                         frontLayerContent = {

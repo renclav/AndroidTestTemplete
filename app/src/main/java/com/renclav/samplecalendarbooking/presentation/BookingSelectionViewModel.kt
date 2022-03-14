@@ -9,6 +9,7 @@ import dagger.assisted.Assisted
 import dagger.assisted.AssistedFactory
 import dagger.assisted.AssistedInject
 import java.time.ZoneId
+import java.time.ZonedDateTime
 
 internal class BookingSelectionViewModel @AssistedInject constructor(
     @Assisted initialState: BookingSelectionStateModel,
@@ -23,6 +24,15 @@ internal class BookingSelectionViewModel @AssistedInject constructor(
                 )
             }
     }
+
+    fun daySelected(currentDay: ZonedDateTime) {
+        setState {
+            copy(
+                selectedDay = currentDay,
+            )
+        }
+    }
+
 
     @AssistedFactory
     interface Factory :
@@ -45,6 +55,7 @@ internal class BookingSelectionViewModel @AssistedInject constructor(
                     locationImageUrl = "https://image.shutterstock.com/image-photo/tree-frog-flying-laughing-animal-600w-752492104.jpg",
                     zoneId = ZoneId.of("Europe/London"),
                 ),
+                selectedDay = null,
             )
         }
     }
