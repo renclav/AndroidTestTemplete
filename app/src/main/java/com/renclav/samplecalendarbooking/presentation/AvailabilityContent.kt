@@ -24,8 +24,6 @@ import com.airbnb.mvrx.compose.collectAsState
 internal fun AvailabilityContent(
     modifier: Modifier,
     viewModel: BookingSelectionViewModel,
-/*    currentSpace: SpaceDetails,
-    currentBookings: List<Booking>,*/
 ) {
     Surface(
         modifier = modifier

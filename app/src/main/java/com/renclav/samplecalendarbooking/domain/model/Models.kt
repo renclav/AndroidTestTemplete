@@ -1,5 +1,6 @@
 package com.renclav.samplecalendarbooking.domain.model
 
+import java.time.ZoneId
 import java.time.ZonedDateTime
 
 internal data class Booking(
@@ -11,4 +12,5 @@ internal data class Booking(
 internal data class SpaceDetails(
     val locationName: String,
     val locationImageUrl: String,
+    val zoneId: ZoneId,
 )

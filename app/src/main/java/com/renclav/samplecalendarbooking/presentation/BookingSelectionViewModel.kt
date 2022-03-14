@@ -8,6 +8,7 @@ import com.renclav.samplecalendarbooking.domain.usecase.BookingSelectionCurrentB
 import dagger.assisted.Assisted
 import dagger.assisted.AssistedFactory
 import dagger.assisted.AssistedInject
+import java.time.ZoneId
 
 internal class BookingSelectionViewModel @AssistedInject constructor(
     @Assisted initialState: BookingSelectionStateModel,
@@ -42,6 +43,7 @@ internal class BookingSelectionViewModel @AssistedInject constructor(
                 currentSpace = SpaceDetails(
                     locationName = "Cool space in Bristol",
                     locationImageUrl = "https://image.shutterstock.com/image-photo/tree-frog-flying-laughing-animal-600w-752492104.jpg",
+                    zoneId = ZoneId.of("Europe/London"),
                 ),
             )
         }

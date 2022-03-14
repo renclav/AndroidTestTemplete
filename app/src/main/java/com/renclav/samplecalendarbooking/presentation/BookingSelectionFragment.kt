@@ -82,7 +82,10 @@ internal class BookingSelectionFragment : Fragment() {
                             )
                         },
                         backLayerContent = {
-                            CalenderContent(Modifier.fillMaxWidth())
+                            CalenderContent(
+                                modifier = Modifier.fillMaxWidth(),
+                                viewModel = viewModel,
+                            )
                         },
                         frontLayerContent = {
                             Surface(

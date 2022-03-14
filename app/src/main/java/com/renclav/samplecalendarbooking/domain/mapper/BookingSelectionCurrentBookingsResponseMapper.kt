@@ -42,6 +42,7 @@ internal class BookingSelectionCurrentBookingsResponseMapperImpl @Inject constru
                         spaceDetails = SpaceDetails(
                             locationName = it.spaceName.orEmpty(),
                             locationImageUrl = it.spaceImage.orEmpty(),
+                            zoneId = zoneId,
                         ),
                     )
                 }
