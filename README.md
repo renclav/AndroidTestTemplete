@@ -1,7 +1,4 @@
-
-
-
-# samplecalenderbooking
+# Sample Calendar Booking
 Time sensitive demonstration of a calendar selection for a generic booking process
 
 ## Installation
@@ -46,6 +43,7 @@ Time sensitive demonstration of a calendar selection for a generic booking proce
  11. and a lot more, I would enjoy a chat around what might be expected and how I could tackle it
  12. The usual setup of code checks, formatting etc has been ignored here
  13. Add Loading, Content, Error states to UI
+ 14. Use resources and not hardcodced strings, dimensions etc
 
 ## Final Thoughts
 
