@@ -41,6 +41,7 @@ Time sensitive demonstration of a calendar selection for a generic booking proce
  9. fix the scaffold background, it doesn't look great when the content is pulled down
  10. and a lot more, I would enjoy a chat around what might be expected and how I could tackle it
  11. The usual setup of code checks, formatting etc has been ignored here
+ 12. Add Loading, Content, Error states to UI
 
 ## Final Thoughts
 
