@@ -92,15 +92,10 @@ internal class BookingSelectionFragment : Fragment() {
                             )
                         },
                         frontLayerContent = {
-                            Surface(
+                            AvailabilityContent(
                                 modifier = Modifier.fillMaxSize(),
-                                color = MaterialTheme.colors.background
-                            ) {
-                                AvailabilityContent(
-                                    modifier = Modifier.fillMaxSize(),
-                                    viewModel = viewModel,
-                                )
-                            }
+                                viewModel = viewModel,
+                            )
                         },
                         peekHeight = 60.dp,
                     )
@@ -114,8 +109,4 @@ internal class BookingSelectionFragment : Fragment() {
         super.onDestroyView()
         _binding = null
     }
-
-/*    override fun invalidate(): Unit = withState(viewModel) { state ->
-        binding.testview.text = state.currentBookings()?.toString()
-    }*/
 }
