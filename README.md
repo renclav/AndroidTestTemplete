@@ -1,4 +1,5 @@
 
+
 # samplecalenderbooking
 Time sensitive demonstration of a calendar selection for a generic booking process
 
@@ -18,13 +19,14 @@ Time sensitive demonstration of a calendar selection for a generic booking proce
 ## Considerations
 
  1. This project was tackled as a proof of concept highlighting a clean architecture approach, with UI being left until last (paper mocking was performed at the start to get an idea of the data structures required by the UI)
- 2. All times from API (json array), are considered UCT ([Instant](https://docs.oracle.com/javase/8/docs/api/java/time/Instant.html) in java)
- 3. This was achieved by way of MVVM viewmodels as well MVI (with the help of [mavericks](https://github.com/airbnb/mavericks)) for its unidirectional data flow and encapsulated immutable state models.
- 4. Use cases/interactors and model mappers were used to highlight layer boundaries and how one might cross them
- 5. DI was performed throughout by way of the [Hilt](https://dagger.dev/hilt/) library, supported by Google.
- 6. Due to time constraints, tests were only focussed on in the use case sample, with comments in code highlighting how some other areas may have been test.
- 7. Theming was ignored in this process, but references as one would if correctly setup
- 8. For the UX, it was assumed the user arrived on a full screen date picker based on the spec of
+ 2. The package structure treats code outside of the data/domain/presentation packages as the "rest of the theoretical app", and everything inside as the "calendar feature".  If this were a real app, the code would either live in its own module, attain a feature package structure
+ 3. All times from API (json array), are considered UCT ([Instant](https://docs.oracle.com/javase/8/docs/api/java/time/Instant.html) in java)
+ 4. This was achieved by way of MVVM viewmodels as well MVI (with the help of [mavericks](https://github.com/airbnb/mavericks)) for its unidirectional data flow and encapsulated immutable state models.
+ 5. Use cases/interactors and model mappers were used to highlight layer boundaries and how one might cross them
+ 6. DI was performed throughout by way of the [Hilt](https://dagger.dev/hilt/) library, supported by Google.
+ 7. Due to time constraints, tests were only focussed on in the use case sample, with comments in code highlighting how some other areas may have been test.
+ 8. Theming was ignored in this process, but references as one would if correctly setup
+ 9. For the UX, it was assumed the user arrived on a full screen date picker based on the spec of
 
 > they’re presented with a calendar showing
 
