@@ -1,9 +1,8 @@
 package com.renclav.samplecalendarbooking.data.model
 
 import androidx.annotation.Keep
-import com.squareup.moshi.JsonClass
-
 import com.squareup.moshi.Json
+import com.squareup.moshi.JsonClass
 
 internal data class BookingsByUserResult(
     val data : List<ExistingBooking>,
