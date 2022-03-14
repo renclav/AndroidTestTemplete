@@ -1,4 +1,4 @@
-package com.renclav.samplecalendarbooking.presentation.theme
+package com.renclav.samplecalendarbooking.theme
 
 import androidx.compose.material.Typography
 import androidx.compose.ui.text.TextStyle

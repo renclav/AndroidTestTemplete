@@ -1,4 +1,4 @@
-package com.renclav.samplecalendarbooking.presentation.theme
+package com.renclav.samplecalendarbooking.theme
 
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Shapes

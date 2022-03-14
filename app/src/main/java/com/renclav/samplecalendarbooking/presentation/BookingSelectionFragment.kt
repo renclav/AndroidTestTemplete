@@ -20,7 +20,7 @@ import androidx.fragment.app.Fragment
 import com.airbnb.mvrx.compose.collectAsState
 import com.airbnb.mvrx.compose.mavericksViewModel
 import com.renclav.samplecalendarbooking.databinding.BookingSelectionFragmentBinding
-import com.renclav.samplecalendarbooking.presentation.theme.SampleCalendarBookingTheme
+import com.renclav.samplecalendarbooking.theme.SampleCalendarBookingTheme
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
