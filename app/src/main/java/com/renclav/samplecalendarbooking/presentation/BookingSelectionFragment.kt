@@ -5,22 +5,24 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Surface
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.material.*
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Close
+import androidx.compose.material.icons.filled.Menu
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.platform.ComposeView
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.ViewCompositionStrategy
+import androidx.compose.ui.unit.dp
 import androidx.fragment.app.Fragment
-import com.airbnb.mvrx.MavericksView
 import com.airbnb.mvrx.compose.collectAsState
 import com.airbnb.mvrx.compose.mavericksViewModel
-import com.airbnb.mvrx.fragmentViewModel
-import com.airbnb.mvrx.withState
-import com.renclav.samplecalendarbooking.Greeting
 import com.renclav.samplecalendarbooking.databinding.BookingSelectionFragmentBinding
 import com.renclav.samplecalendarbooking.presentation.theme.SampleCalendarBookingTheme
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 internal class BookingSelectionFragment : Fragment() {
@@ -28,8 +30,9 @@ internal class BookingSelectionFragment : Fragment() {
     private var _binding: BookingSelectionFragmentBinding? = null
     private val binding get() = _binding!!
 
-   // private val viewModel: BookingSelectionViewModel by fragmentViewModel()
+    // private val viewModel: BookingSelectionViewModel by fragmentViewModel()
 
+    @OptIn(ExperimentalMaterialApi::class)
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -40,14 +43,60 @@ internal class BookingSelectionFragment : Fragment() {
             setContent {
                 SampleCalendarBookingTheme {
                     val viewModel: BookingSelectionViewModel = mavericksViewModel()
-                    val state by viewModel.collectAsState()
-                    // A surface container using the 'background' color from the theme
-                    Surface(
-                        modifier = Modifier.fillMaxSize(),
-                        color = MaterialTheme.colors.background
-                    ) {
-                        Greeting(state.currentBookings.toString())
-                    }
+                    val scaffoldState =
+                        rememberBackdropScaffoldState(initialValue = BackdropValue.Revealed)
+                    val scope = rememberCoroutineScope()
+
+                    BackdropScaffold(
+                        scaffoldState = scaffoldState,
+                        appBar = {
+                            TopAppBar(
+                                title = { Text("Select a Date") },
+                                navigationIcon = {
+                                    if (scaffoldState.isConcealed) {
+                                        IconButton(
+                                            onClick = {
+                                                scope.launch { scaffoldState.reveal() }
+                                            }
+                                        ) {
+                                            Icon(
+                                                Icons.Default.Menu,
+                                                contentDescription = "Menu"
+                                            )
+                                        }
+                                    } else {
+                                        IconButton(
+                                            onClick = {
+                                                scope.launch { scaffoldState.conceal() }
+                                            }
+                                        ) {
+                                            Icon(
+                                                Icons.Default.Close,
+                                                contentDescription = "Close"
+                                            )
+                                        }
+                                    }
+                                },
+                                elevation = 0.dp,
+                                backgroundColor = Color.Transparent
+                            )
+                        },
+                        backLayerContent = {
+                            CalenderContent(Modifier.fillMaxWidth())
+                        },
+                        frontLayerContent = {
+                            Surface(
+                                modifier = Modifier.fillMaxSize(),
+                                color = MaterialTheme.colors.background
+                            ) {
+                                AvailabilityContent(
+                                    modifier = Modifier.fillMaxSize(),
+                                    viewModel = viewModel,
+                                )
+                            }
+                        },
+                        peekHeight = 60.dp,
+                    )
                 }
             }
         }
