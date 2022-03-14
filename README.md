@@ -1,5 +1,6 @@
 
 
+
 # samplecalenderbooking
 Time sensitive demonstration of a calendar selection for a generic booking process
 
@@ -36,14 +37,15 @@ Time sensitive demonstration of a calendar selection for a generic booking proce
  2. The relative time displayed on selection does not always use the same offset for all bookings, I would need to investigate further ([documentation, see withZoneSameInstant](https://docs.oracle.com/javase/8/docs/api/java/time/ZonedDateTime.html))
  3. all days are enabled on the calendar, this should come from the backend
  4. day ranges are not handled specifically by UI
- 5. On larger screens, the calendar can be pulled out of the top drawer (no more show/hide affordance) and placed on the left in landscape, and top on portrait
- 6. Days with booked slots could be better highlighted than the current red number
- 7. Accessibility is lacking in some elements
- 8. edge case testing, I came across a few while iterating
- 9. fix the scaffold background, it doesn't look great when the content is pulled down
- 10. and a lot more, I would enjoy a chat around what might be expected and how I could tackle it
- 11. The usual setup of code checks, formatting etc has been ignored here
- 12. Add Loading, Content, Error states to UI
+ 5. grouping existing bookings from same Space
+ 6. On larger screens, the calendar can be pulled out of the top drawer (no more show/hide affordance) and placed on the left in landscape, and top on portrait
+ 7. Days with booked slots could be better highlighted than the current red number
+ 8. Accessibility is lacking in some elements
+ 9. edge case testing, I came across a few while iterating
+ 10. fix the scaffold background, it doesn't look great when the content is pulled down
+ 11. and a lot more, I would enjoy a chat around what might be expected and how I could tackle it
+ 12. The usual setup of code checks, formatting etc has been ignored here
+ 13. Add Loading, Content, Error states to UI
 
 ## Final Thoughts
 
