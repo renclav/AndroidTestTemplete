@@ -1,5 +1,30 @@
+
 # Sample Calendar Booking
 Time sensitive demonstration of a calendar selection for a generic booking process
+
+## Problem Statement
+
+When users come to book in the app, they’re presented with a calendar showing the available dates for the space they’re trying to book along with their existing bookings. When the user taps on a specific date, they should be able to see their existing bookings relative to the timezone of the space they’re trying to book.  
+  
+
+Given the following array of bookings, you must place these bookings onto the calendar. The user is trying to book a space located in Bristol, United Kingdom for the month of March 2022. Please only concentrate on just one month for now.  
+  
+
+The response to this task should demonstrate:  
+
+-   Your ability to approach problems and break them down into smaller chunks of work.
+-   Your ability to structure code.
+-   Your ability to consider UI and UX.
+
+  
+Please provide us with access to a git repository containing your work along with a readme containing:  
+
+-   Installation and instructions about how to run the project.
+-   Notes detailing your approach to the exercise.
+-   Notes detailing what you would change/improve given more time.
+-   Closing thoughts.
+
+  (*json included)*
 
 ## Installation
 
