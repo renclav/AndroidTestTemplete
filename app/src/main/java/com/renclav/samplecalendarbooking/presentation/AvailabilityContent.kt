@@ -97,7 +97,7 @@ internal fun CurrentBookingCard(booking: BookingSelectionStateModel.DynamicBooki
                 overflow = TextOverflow.Ellipsis,
             )
             Text(
-                text = "End: " + booking.start,
+                text = "End: " + booking.end,
                 style = MaterialTheme.typography.subtitle1,
                 fontWeight = FontWeight.Bold,
                 maxLines = 2,

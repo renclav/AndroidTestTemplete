@@ -1,11 +1,13 @@
 package com.renclav.samplecalendarbooking.presentation
 
+
 import com.airbnb.mvrx.Async
 import com.airbnb.mvrx.MavericksState
 import com.renclav.samplecalendarbooking.domain.model.Booking
 import com.renclav.samplecalendarbooking.domain.model.SpaceDetails
 import java.time.ZonedDateTime
 import java.time.format.DateTimeFormatter
+import java.time.format.FormatStyle
 
 internal data class BookingSelectionStateModel(
     val currentBookings: Async<List<Booking>>,
@@ -14,7 +16,7 @@ internal data class BookingSelectionStateModel(
 ) : MavericksState {
 
     private companion object {
-        val dateFormatter = DateTimeFormatter.ofPattern("MM/dd/yyyy - HH:mm sZ")
+        val dateFormatter = DateTimeFormatter.ofLocalizedDateTime(FormatStyle.SHORT)
         val selectedDateFormatter = DateTimeFormatter.ofPattern("dd/MM/yyyy")
     }
 
