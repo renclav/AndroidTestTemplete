@@ -2,6 +2,7 @@ plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
     id 'dagger.hilt.android.plugin'
+    id 'com.google.android.libraries.mapsplatform.secrets-gradle-plugin'
 }
 
 apply plugin: 'kotlin-kapt'
@@ -103,4 +104,6 @@ dependencies {
     testImplementation "org.mockito.kotlin:mockito-kotlin:$mockito_kotlin_version"
     testImplementation "app.cash.turbine:turbine:$turbine_version"
     testImplementation "com.google.truth:truth:$truth_version"
+
+    implementation 'com.google.android.gms:play-services-maps:18.0.2'
 }

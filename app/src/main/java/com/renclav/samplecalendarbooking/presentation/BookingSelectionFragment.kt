@@ -4,31 +4,21 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.material.*
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Close
-import androidx.compose.material.icons.filled.Menu
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.rememberCoroutineScope
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.platform.ViewCompositionStrategy
-import androidx.compose.ui.unit.dp
 import androidx.fragment.app.Fragment
 import com.airbnb.mvrx.MavericksView
-import com.airbnb.mvrx.compose.collectAsState
-import com.airbnb.mvrx.compose.mavericksViewModel
 import com.airbnb.mvrx.fragmentViewModel
 import com.airbnb.mvrx.withState
+import com.google.android.gms.maps.GoogleMap
+import com.google.android.gms.maps.OnMapReadyCallback
+import com.google.android.gms.maps.SupportMapFragment
+import com.google.android.gms.maps.model.MapStyleOptions
+import com.renclav.samplecalendarbooking.R
 import com.renclav.samplecalendarbooking.databinding.BookingSelectionFragmentBinding
-import com.renclav.samplecalendarbooking.theme.SampleCalendarBookingTheme
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
-internal class BookingSelectionFragment : Fragment(), MavericksView {
+internal class BookingSelectionFragment : Fragment(), MavericksView, OnMapReadyCallback  {
 
     private var _binding: BookingSelectionFragmentBinding? = null
     private val binding get() = _binding!!
@@ -109,12 +99,29 @@ internal class BookingSelectionFragment : Fragment(), MavericksView {
         return binding.root
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        initMapFragment()
+    }
+
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
     }
 
+    private fun initMapFragment() {
+     
+        val mapFragment: SupportMapFragment =
+            childFragmentManager.findFragmentById(binding.map.id) as SupportMapFragment
+        mapFragment.getMapAsync(this)
+    }
+
+
     override fun invalidate(): Unit = withState(viewModel) { state ->
  //       TODO("Not yet implemented")
+    }
+
+    override fun onMapReady(map: GoogleMap) {
+        //
     }
 }
