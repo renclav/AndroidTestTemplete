@@ -29,7 +29,7 @@ internal object DummyFeatureDataModule {
     @Reusable
     fun dummyRetrofit(moshi: Moshi): Retrofit {
         return Retrofit.Builder()
-            .baseUrl("somethingcool")
+            .baseUrl("https://www.google.com/")
             .addConverterFactory(
                 MoshiConverterFactory.create(moshi)
             )

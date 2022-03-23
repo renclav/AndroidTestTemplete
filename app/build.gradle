@@ -111,4 +111,9 @@ dependencies {
     implementation "com.squareup.retrofit2:retrofit:$retrofit2_version"
     // JSON Parsing
     implementation "com.squareup.retrofit2:converter-moshi:$retrofit2_version"
+    // define a BOM and its version
+    implementation(platform("com.squareup.okhttp3:okhttp-bom:4.9.3"))
+
+    // define any required OkHttp artifacts without version
+    implementation("com.squareup.okhttp3:okhttp")
 }
