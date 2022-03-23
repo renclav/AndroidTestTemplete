@@ -110,7 +110,7 @@ internal class BookingSelectionFragment : Fragment(), MavericksView, OnMapReadyC
     }
 
     private fun initMapFragment() {
-     
+
         val mapFragment: SupportMapFragment =
             childFragmentManager.findFragmentById(binding.map.id) as SupportMapFragment
         mapFragment.getMapAsync(this)
