@@ -1,8 +1,7 @@
 package com.renclav.samplecalendarbooking.domain.usecase
 
-import com.renclav.samplecalendarbooking.data.repository.BookingsRepository
-import com.renclav.samplecalendarbooking.domain.mapper.BookingSelectionCurrentBookingsResponseMapper
-import com.renclav.samplecalendarbooking.domain.model.Booking
+import com.renclav.samplecalendarbooking.data.repository.PlaceholderRepository
+import com.renclav.samplecalendarbooking.domain.mapper.DummyResponseMapper
 import com.renclav.samplecalendarbooking.util.coroutines.AppCoroutineDispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.catch
@@ -16,20 +15,19 @@ import javax.inject.Inject
  * Note: this uses a Flow as real world app might observe this for changes,
  * instead of a being a one-off for this demo
  */
-internal interface BookingSelectionCurrentBookingsUseCase {
-    operator fun invoke(userId: String): Flow<List<Booking>>
+internal interface DummyUseCase {
+    operator fun invoke(userId: String): Flow<List<String>>
 }
 
-internal class BookingSelectionCurrentBookingsUseCaseImpl @Inject constructor(
+internal class DummyUseCaseImpl @Inject constructor(
     private val dispatchers: AppCoroutineDispatchers,
-    private val bookingsRepository : BookingsRepository,
-    private val currentBookingsResponseMapper: BookingSelectionCurrentBookingsResponseMapper,
-) : BookingSelectionCurrentBookingsUseCase {
-    override fun invoke(userId: String): Flow<List<Booking>> {
+    private val placeholderRepository: PlaceholderRepository,
+    private val currentBookingsResponseMapper: DummyResponseMapper,
+) : DummyUseCase {
+    override fun invoke(userId: String): Flow<List<String>> {
         return flow {
-            val response = bookingsRepository
-                .getBookingsByUserId(userId)
-                .getOrThrow()
+            val response = placeholderRepository
+                .getDummyThing(userId)
                 .let {
                     currentBookingsResponseMapper(it)
                 }

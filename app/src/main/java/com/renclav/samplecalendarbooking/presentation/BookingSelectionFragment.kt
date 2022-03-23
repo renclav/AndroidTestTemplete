@@ -17,18 +17,23 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.ViewCompositionStrategy
 import androidx.compose.ui.unit.dp
 import androidx.fragment.app.Fragment
+import com.airbnb.mvrx.MavericksView
 import com.airbnb.mvrx.compose.collectAsState
 import com.airbnb.mvrx.compose.mavericksViewModel
+import com.airbnb.mvrx.fragmentViewModel
+import com.airbnb.mvrx.withState
 import com.renclav.samplecalendarbooking.databinding.BookingSelectionFragmentBinding
 import com.renclav.samplecalendarbooking.theme.SampleCalendarBookingTheme
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
-internal class BookingSelectionFragment : Fragment() {
+internal class BookingSelectionFragment : Fragment(), MavericksView {
 
     private var _binding: BookingSelectionFragmentBinding? = null
     private val binding get() = _binding!!
+
+    private val viewModel: DummyFeatureViewModel by fragmentViewModel()
 
     @OptIn(ExperimentalMaterialApi::class)
     override fun onCreateView(
@@ -37,21 +42,20 @@ internal class BookingSelectionFragment : Fragment() {
     ): View {
         _binding = BookingSelectionFragmentBinding.inflate(inflater, container, false)
         binding.composeView.apply {
-            setViewCompositionStrategy(ViewCompositionStrategy.DisposeOnViewTreeLifecycleDestroyed)
+          /*  setViewCompositionStrategy(ViewCompositionStrategy.DisposeOnViewTreeLifecycleDestroyed)
             setContent {
                 SampleCalendarBookingTheme {
-                    val viewModel: BookingSelectionViewModel = mavericksViewModel()
+                    val viewModel: DummyFeatureViewModel = mavericksViewModel()
                     val scaffoldState =
                         rememberBackdropScaffoldState(initialValue = BackdropValue.Revealed)
                     val scope = rememberCoroutineScope()
 
-                    val title by viewModel.collectAsState(BookingSelectionStateModel::toolBarTitle)
 
                     BackdropScaffold(
                         scaffoldState = scaffoldState,
                         appBar = {
                             TopAppBar(
-                                title = { Text(title) },
+                                title = { Text("Cool) },
                                 navigationIcon = {
                                     if (scaffoldState.isConcealed) {
                                         IconButton(
@@ -100,7 +104,7 @@ internal class BookingSelectionFragment : Fragment() {
                         peekHeight = 60.dp,
                     )
                 }
-            }
+            }*/
         }
         return binding.root
     }
@@ -108,5 +112,9 @@ internal class BookingSelectionFragment : Fragment() {
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+    }
+
+    override fun invalidate(): Unit = withState(viewModel) { state ->
+ //       TODO("Not yet implemented")
     }
 }

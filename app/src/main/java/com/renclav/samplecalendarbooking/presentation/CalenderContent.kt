@@ -1,40 +1,23 @@
 package com.renclav.samplecalendarbooking.presentation
 
-import androidx.compose.foundation.ExperimentalFoundationApi
-import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.lazy.GridCells
-import androidx.compose.foundation.lazy.LazyVerticalGrid
-import androidx.compose.material.*
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
-import androidx.compose.ui.Alignment
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.text.style.TextOverflow
-import androidx.compose.ui.unit.dp
-import com.airbnb.mvrx.compose.collectAsState
-import com.renclav.samplecalendarbooking.domain.model.Booking
-import java.time.ZonedDateTime
-import java.time.temporal.ChronoUnit
-
-@OptIn(ExperimentalFoundationApi::class)
+/*@OptIn(ExperimentalFoundationApi::class)
 @Composable
 internal fun CalenderContent(
     modifier: Modifier,
-    viewModel: BookingSelectionViewModel,
+    viewModel: DummyFeatureViewModel,
     dateSelected: ((ZonedDateTime) -> Unit),
 ) {
-    val _currentBookings by viewModel.collectAsState(BookingSelectionStateModel::currentBookings)
-    val currentSpace by viewModel.collectAsState(BookingSelectionStateModel::currentSpace)
+    val _currentBookings by viewModel.collectAsState(DummyFeatureStateModel::currentBookings)
+    val currentSpace by viewModel.collectAsState(DummyFeatureStateModel::currentSpace)
     val currentBookings = _currentBookings().orEmpty()
 
     Surface(
         modifier = modifier,
         color = MaterialTheme.colors.background
     ) {
-        /**
+        *//**
          * Hardcoded month of March
-         */
+         *//*
 
         Column(
             horizontalAlignment = Alignment.CenterHorizontally,
@@ -59,11 +42,12 @@ internal fun CalenderContent(
             }
         }
     }
-}
+}*/
 
 /**
  * Start of March timestamp, should really be pulled out (far too tired)
  */
+/*
 @OptIn(ExperimentalMaterialApi::class)
 @Composable
 internal fun Day(
@@ -104,4 +88,4 @@ internal fun Day(
             }
         }
     }
-}
+}*/

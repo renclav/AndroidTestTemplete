@@ -12,7 +12,7 @@ import javax.inject.Singleton
  */
 @InstallIn(SingletonComponent::class)
 @Module
-internal object BookingSelectionDataModule {
+internal object DummyFeatureDataModule {
     @Provides
     @Singleton
     internal fun moshi(): Moshi {

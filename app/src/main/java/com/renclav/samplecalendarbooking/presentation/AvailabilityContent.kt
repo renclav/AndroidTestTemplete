@@ -1,29 +1,9 @@
 package com.renclav.samplecalendarbooking.presentation
 
-import android.graphics.drawable.ColorDrawable
-import androidx.compose.foundation.Image
-import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.items
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Surface
-import androidx.compose.material.Text
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
-import androidx.compose.ui.Alignment
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.clip
-import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.text.style.TextOverflow
-import androidx.compose.ui.unit.dp
-import coil.compose.rememberImagePainter
-import com.airbnb.mvrx.compose.collectAsState
-
-@Composable
+/*@Composable
 internal fun AvailabilityContent(
     modifier: Modifier,
-    viewModel: BookingSelectionViewModel,
+    viewModel: DummyFeatureViewModel,
 ) {
     Surface(
         modifier = modifier
@@ -52,10 +32,11 @@ internal fun AvailabilityContent(
             }
         }
     }
-}
+}*/
 
+/*
 @Composable
-internal fun CurrentBookingCard(booking: BookingSelectionStateModel.DynamicBooking) {
+internal fun CurrentBookingCard(booking: DummyFeatureStateModel.DynamicBooking) {
     Row(
         modifier = Modifier
             .clip(MaterialTheme.shapes.medium),
@@ -64,9 +45,11 @@ internal fun CurrentBookingCard(booking: BookingSelectionStateModel.DynamicBooki
         val painter = rememberImagePainter(
             data = booking.spaceDetails.locationImageUrl,
             builder = {
-                /**
+                */
+/**
                  * Fast solution, better images would be great here
-                 */
+                 *//*
+
                 placeholder(ColorDrawable(android.graphics.Color.GRAY))
                 error(ColorDrawable(android.graphics.Color.RED))
             },
@@ -105,4 +88,4 @@ internal fun CurrentBookingCard(booking: BookingSelectionStateModel.DynamicBooki
             )
         }
     }
-}
+}*/

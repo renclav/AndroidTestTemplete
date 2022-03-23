@@ -13,7 +13,7 @@ import dagger.multibindings.IntoMap
 internal interface BookingSelectionViewModelModule {
     @Binds
     @IntoMap
-    @ViewModelKey(BookingSelectionViewModel::class)
-    fun BookingSelectionViewModel.Factory.bindBookingSelectionFactory(): AssistedViewModelFactory<*, *>
+    @ViewModelKey(DummyFeatureViewModel::class)
+    fun DummyFeatureViewModel.Factory.bindBookingSelectionFactory(): AssistedViewModelFactory<*, *>
 
 }
